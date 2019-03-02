@@ -1,0 +1,525 @@
+//out: ../css/main.css
+@import './normalize.less';
+@import url('https://fonts.googleapis.com/css?family=Merriweather:900|Montserrat:700');
+
+@green: #19bd9c;
+@gray: #151521;
+@darkblue: #252839;
+@darkgrey: #131c1c;
+@white: #fff;
+@fuchsia: #ff1c5e;
+@sub-slide-height: 590px;
+@height-margin: ~'calc((100vh - @{sub-slide-height}) / 2)';
+@sub-slide-inner-height: ~'calc(@{sub-slide-height} * 0.72)';
+@sub-slide-outer-height: ~'calc(@{sub-slide-height} * 0.28)';
+
+@animate-slider: margin-left 2s cubic-bezier(.86, 0, .07, 1);
+@common-bg-transition: background-color 2s ease-in-out;
+
+@common-transparency: opacity 0.5s ease-in-out;
+
+@max-query: 1140px;
+@mid-query: 855px;
+@mobile-query: 570px;
+
+@keyframes rotation {
+    from {
+        transform: rotate(359deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes flash {
+    from {
+        text-shadow: 0 0 10px #fff;
+    }
+
+    to {
+        text-shadow: 0 0 0px transparent;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: @gray;
+    margin: 0;
+}
+
+p {
+    color: @white;
+}
+
+.montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.merriweather {
+    font-family: 'Merriweather', sans-serif;
+}
+
+div#main {
+    width: 100%;
+    max-width: @max-query;
+    height: @sub-slide-height;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-top: @height-margin;
+
+    @media screen and (max-width: @max-query) {
+        max-width: 855px;
+    }
+
+    @media screen and (max-width: @mid-query) {
+        max-width: 570px;
+    }
+
+    @media screen and (max-width: @mobile-query) {
+        max-width: 285px;
+        margin-top: 0;
+        height: auto;
+    }
+}
+
+div#slider_wrapper {
+    width: 200%;
+    display: inline-block;
+    transition: @animate-slider;
+    margin-left: 0;
+
+    * {
+        background-repeat: no-repeat;
+    }
+
+    @media screen and (max-width: @mobile-query) {
+        width: 100%;
+    }
+}
+
+div.slider {
+    width: 50%;
+    float: left;
+
+    @media screen and (max-width: @mobile-query) {
+        width: 100%;
+        background-position-x: 0;
+        height: 815px;
+    }
+
+    &>div.sub-slide {
+        width: ~'calc(100% / 4)';
+        height: @sub-slide-height;
+        background-color: transparent;
+        float: left;
+
+        &.sub-slide-4 {
+            float: right;
+        }
+
+        @media screen and (max-width: @max-query) {
+            width: ~'calc(100% / 3)';
+
+            &.sub-slide-4 {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: @mid-query) {
+            width: ~'calc(100% / 2)';
+        }
+
+        @media screen and (max-width: @mobile-query) {
+            &.sub-slide-4 {
+                display: block;
+                width: 100%;
+                height: 485px;
+
+                div.inner-content {
+                    height: 485px;
+                    background-position-y: top;
+                    background-size: cover;
+                    margin-top: 42%;
+                }
+            }
+        }
+    }
+}
+
+div.visa-to-the-moon,
+div.explore-the-surface {
+    background-size: 75%;
+    background-position-x: right;
+    background-position-y: bottom;
+}
+
+div.visa-to-the-moon {
+    //background-image: url('../assets/images/background.jpg');
+    background-color: @darkblue;
+    opacity: 0;
+    transition: @common-transparency;
+
+    @media screen and (max-width: @mid-query) {
+        background-size: cover;
+        background-position-x: -60%;
+    }
+
+    @media screen and (max-width: @mobile-query) {
+        width: 100%;
+        background-image: none;
+    }
+}
+
+div.explore-the-surface {
+    background-image: url('../assets/images/Moon-phase.jpg');
+    background-position-y: top;
+    background-color: @darkgrey;
+    height: @sub-slide-height;
+
+    @media screen and (max-width: @mobile-query) {
+        display: none;
+    }
+}
+
+div.inner-content {
+    height: @sub-slide-inner-height;
+    overflow: hidden;
+}
+
+div.sub-slide-4 div.inner-content {
+    //background-image: url('../assets/images/rocket.png');
+    background-size: cover;
+    background-position-x: 35%;
+    opacity: 0;
+    transition: @common-transparency;
+}
+
+div.commonSlides {
+    position: absolute;
+    width: 100%;
+
+    div.sub-slide-1 {
+        //background-image: url('../assets/images/rock.jpg');
+        background-size: cover;
+        background-position-x: right;
+        background-position-y: top;
+        opacity: 0;
+        transition: @common-transparency;
+
+        @media screen and (max-width: @mobile-query) {
+            height: 120px;
+            display: block;
+            width: 100%;
+        }
+    }
+
+    div.faded-green {
+        height: inherit;
+        background-color: darken(fade(@green, 50%), 25%);
+        filter: blur(15px);
+        opacity: 0;
+        transition: @common-transparency;
+    }
+}
+
+div.sticky {
+    width: 100%;
+    position: fixed;
+    max-width: 1140px;
+    height: @sub-slide-height;
+    margin-top:~'calc(-@{sub-slide-height} - 2px)';
+
+    @media screen and (max-width: @max-query) {
+        max-width: 855px;
+    }
+
+    @media screen and (max-width: @mid-query) {
+        max-width: 570px;
+    }
+
+    @media screen and (max-width: @mobile-query) {
+        max-width: 285px;
+        position: absolute;
+        top: 0;
+        margin-top: 0;
+        height: 485px;
+    }
+}
+
+div#text-layout {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+}
+
+div.logo-wrapper,
+div.text-wrapper {
+    width: ~'calc(100% / 4)';
+    float: left;
+
+    @media screen and (max-width: @max-query) {
+        width: ~'calc(100% / 3)';
+    }
+
+    @media screen and (max-width: @mid-query) {
+        width: ~'calc(100% /2)';
+    }
+
+    @media screen and (max-width: @mobile-query) {
+        width: 100%;
+    }
+}
+
+div.logo-wrapper {
+    @media screen and (max-width: @mobile-query) {
+        width: 100%;
+    }
+}
+
+div.text-wrapper {
+    padding: 3% 3% 0;
+
+    @media screen and (max-width: @mobile-query) {
+        width: 100%;
+        margin-top: 120%;
+        height: 520px;
+
+        background-image: url('../assets/images/background.jpg');
+        background-size: 330%;
+        background-position-x: 15%;
+        background-position-y: 100%;
+        margin-top: 105%;
+    }
+
+    p.trip {
+        font-size: 1.2rem;
+        line-height: 0;
+        margin-top: -1.6rem;
+        margin-bottom: 2rem;
+        opacity: 0;
+        transition: @common-transparency;
+        cursor: pointer;
+        transition: color 1s ease-in-out;
+
+        &:hover {
+            color: @fuchsia;
+        }
+
+        @media screen and (max-width: @mobile-query) {
+            font-size: 1.2rem;
+        }
+    }
+
+    p.hashes {
+        font-style: italic;
+        font-size: 0.9rem;
+        opacity: 0;
+        transition: @common-transparency;
+    }
+}
+
+img#logo {
+    margin-left: 15%;
+    margin-top: 15%;
+    opacity: 0;
+    transition: @common-transparency;
+
+    @media screen and (max-width: @mobile-query) {
+        width: 50%;
+        margin-left: 25%;
+    }
+}
+
+div.launch-wrapper {
+    display: inline-block;
+    height: 135px;
+    border-bottom: 3px solid @green;
+    overflow: hidden;
+
+    @media screen and (max-width: @mobile-query) {
+        margin-top: 5rem;
+    }
+
+    img#launch {
+        //opacity: 0;
+        //transition: @common-transparency;
+        float: left;
+        margin-top: 10rem;
+        transition: margin-top 1s cubic-bezier(.86, 0, .07, 1);
+    }
+}
+
+div.moto-wrapper {
+    width: 100%;
+    float: left;
+    margin-top: 1%;
+
+    @media screen and (max-width: @mobile-query) {
+        position: absolute;
+        top: 330px;
+    }
+
+    div.both-motos {
+        width: 200%;
+        display: inline-block;
+        transition: @animate-slider;
+        margin-left: 0;
+
+        @media screen and (max-width: @mobile-query) {
+            width: 100%;
+        }
+    }
+
+    p.moto {
+        font-size: 4.4rem;
+        line-height: 0;
+        letter-spacing: -2px;
+        padding-left: 5rem;
+        width: 50%;
+        float: left;
+        opacity: 0;
+        transition: @common-transparency;
+
+        br {
+            display: none;
+
+            @media screen and (max-width: @mobile-query) {
+                display: inline;
+            }
+        }
+
+        @media screen and (max-width: @mid-query) {
+            font-size: 3rem;
+        }
+
+        @media screen and (max-width: @mobile-query) {
+            font-size: 3rem;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            line-height: 100%;
+            padding: 0 1.5rem;
+
+            &.explore {
+                display: none;
+            }
+        }
+    }
+
+    div.startButton {
+        background-color: @fuchsia;
+        padding: 1rem 2rem;
+        display: inline-block;
+        margin-left: 5rem;
+        opacity: 0;
+        transition: @common-transparency;
+
+        @media screen and (max-width: @mobile-query) {
+            display: none;
+        }
+
+        p.start {
+            color: @white;
+            font-size: 1.2rem;
+            font-style: italic;
+            line-height: 0;
+
+            @media screen and (max-width: @mid-query) {
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+
+
+div.slider-indicator {
+    height: @sub-slide-outer-height;
+    width: ~'calc(100% / 4)';
+    background-color: @darkblue;
+    margin-top: @sub-slide-inner-height;
+    margin-left: ~'calc(100% / 2)';
+    transition: @common-bg-transition;
+    opacity: 0;
+    transition: @common-transparency;
+
+    @media screen and (max-width: @max-query) {
+        width: ~'calc(100% / 3)';
+        margin-left: ~'calc((100% / 3)* 2)';
+    }
+
+    @media screen and (max-width: @mid-query) {
+        width: ~'calc(100% / 2)';
+        margin-left: ~'calc(100% / 2)';
+    }
+
+    @media screen and (max-width: @mobile-query) {
+        display: none;
+    }
+
+    &.visa {
+        background-color: @darkblue;
+    }
+
+    &.explore {
+        background-color: @darkgrey;
+    }
+
+    div.fixer {
+        height: inherit;
+        width: 100%;
+        display: inline-block;
+    }
+
+    div.bar {
+        width: 50%;
+        height: 2px;
+        background-color: @white;
+        margin: 0 auto;
+        margin-top: 20%;
+
+        div.fill {
+            background-color: @green;
+            width: 50%;
+            height: 2px;
+            float: left;
+            margin-left: 0;
+            transition: @animate-slider;
+        }
+    }
+
+    nav {
+        width: 100%;
+        height: 50%;
+        display: inline-block;
+        padding: 1.5rem 1rem;
+        margin-top: -3px;
+        transition: @common-bg-transition;
+        background-color: inherit;
+
+        button {
+            width: 33%;
+            float: left;
+            padding: 0.5em;
+            background-color: transparent;
+            border: none;
+            color: @green;
+            font-size: 0.9rem;
+            border-bottom: 1px solid transparent;
+            transition: border-color 1s ease-in-out;
+            outline: none;
+            opacity: 0;
+            transition: @common-transparency;
+
+            &:hover {
+                cursor: pointer;
+                color: @white;
+                border-bottom: 1px solid @green;
+            }
+        }
+    }
+}

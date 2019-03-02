@@ -1,0 +1,21 @@
+{
+	"presets": [
+		/*["env", {
+            "modules": false
+        }]*/
+		[
+			"@babel/preset-env",
+			{
+				"targets": {
+					"esmodules": true
+				}
+			}
+		]
+	],
+	"plugins": ["@babel/plugin-syntax-dynamic-import"]
+	/*"targets": {
+        "chrome": "60",
+        "firefox": "60",
+        "ie": "11"
+    },*/
+}
