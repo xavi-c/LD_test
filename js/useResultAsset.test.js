@@ -20,6 +20,7 @@ test('background image has corresponding url', () => {
     useResultAsset('div.bgTest', 'bgImg', 'testBgUrl', 0);
     setTimeout(() => {
         expect(document.querySelector('div.bgTest').style.backgroundImage).toBe('testBgUrl');
+        expect(document.querySelector('div.bgTest').style.opacity).toBe(1);
     },500);
 });
 
