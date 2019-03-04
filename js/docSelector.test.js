@@ -1,4 +1,4 @@
-/**
+/*
  * @jest-environment jsdom
  */
 import { docSelector } from './docSelector.js';
@@ -7,7 +7,7 @@ element.classList.add('test');
 document.querySelector('body').append(element);
 
 test('get correct element using docSelector', () => {
-	expect(element).not.toBeNull
+	expect(element).not.toBeNull;
 });
 
 test('get correct response on check div.test element', () => {
@@ -15,7 +15,9 @@ test('get correct response on check div.test element', () => {
 });
 
 test('throw error if no element is found', () => {
-	expect(() => {docSelector('span.test')}).toThrow();
+	expect(() => {
+		docSelector('span.test');
+	}).toThrow();
 });
 
 const multipleElementOne = document.createElement('p');

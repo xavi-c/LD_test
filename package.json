@@ -47,10 +47,13 @@
     "moduleFileExtensions": [
       "js",
       "vue"
-    ],
-    "transform": {
-      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
-    }
+    ]
+  },
+  "dependencies": {
+    "jsdom-quokka-plugin": "^1.0.14"
+  },
+  "quokka": {
+    "babel": true,
+    "plugins": ["jsdom-quokka-plugin"]
   }
 }

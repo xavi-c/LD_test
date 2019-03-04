@@ -16,7 +16,14 @@ export const useResultAsset = (element, typeOfElement, arg, timeout) => {
 			} else if (typeOfElement == 'bgImg') {
 				docSelector(element).style.backgroundImage = 'url(/' + arg + ')';
 			} else if (typeOfElement == 'text') {
-				docSelector(element).textContent = arg;
+				let localArg;
+				if (timeout <= 1000) {
+					localArg = arg;
+				} else {
+					console.log('using alt system...');
+					localArg = arg;
+				}
+				docSelector(element).textContent = localArg;
 				docSelector(element).style.animation = 'flash 2s linear';
 			}
 			docSelector(element).style.opacity = 1;
