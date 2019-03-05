@@ -1,7 +1,7 @@
 /*
  * @jest-environment jsdom
  */
-import { useResultAsset } from './useResultAsset.js';
+import { useResultAsset } from '../js/useResultAsset.js';
 
 test('inserted image has corresponding url', () => {
 	expect.assertions(3);
@@ -12,6 +12,17 @@ test('inserted image has corresponding url', () => {
 		expect(element).not.toBe(null);
 		expect(document.querySelector('img.test').getAttribute('src')).toBe('testUrl');
 		expect(document.querySelector('img.test').style.opacity).toBe('1');
+	});
+});
+
+test('inserted image logo has rotation animation', () => {
+	expect.assertions(2);
+	const logo = document.createElement('img');
+	logo.setAttribute('id', 'logo');
+	document.querySelector('body').append(logo);
+	return useResultAsset('img#logo', 'img', 'testUrl', 200).then(() => {
+		expect(logo).not.toBe(null);
+		expect(document.querySelector('img#logo').style.animation).toBe('rotation 10s linear infinite');
 	});
 });
 

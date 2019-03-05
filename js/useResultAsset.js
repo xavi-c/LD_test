@@ -19,8 +19,10 @@ export const useResultAsset = (element, typeOfElement, arg, timeout) => {
 				let localArg;
 				if (timeout <= 1000) {
 					localArg = arg;
+					//divide length of string by time given (timeout)
+					//put every character on the divided time
+					//try to put it as splitted by half (like airports pannels)
 				} else {
-					console.log('using alt system...');
 					localArg = arg;
 				}
 				docSelector(element).textContent = localArg;

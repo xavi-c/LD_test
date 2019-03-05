@@ -1,7 +1,7 @@
 /*
  * @jest-environment jsdom
  */
-import { docSelector } from './docSelector.js';
+import { docSelector } from '../js/docSelector.js';
 const element = document.createElement('div');
 element.classList.add('test');
 document.querySelector('body').append(element);

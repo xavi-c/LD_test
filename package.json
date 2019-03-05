@@ -32,6 +32,7 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-requirejs": "^3.2.0",
     "eslint-plugin-vue": "^5.2.2",
+    "html-loader-jest": "^0.2.1",
     "http-server": "^0.11.1",
     "jest": "^24.1.0",
     "jest-vue-preprocessor": "^1.4.0",
@@ -54,6 +55,8 @@
   },
   "quokka": {
     "babel": true,
-    "plugins": ["jsdom-quokka-plugin"]
+    "plugins": [
+      "jsdom-quokka-plugin"
+    ]
   }
 }
