@@ -1,10 +1,4 @@
-# leadtech FrontEnd test by Xavi Cárdenas
+# LDT test by Xavi Cárdenas
 
-Hola.
-
-Para realizar la prueba, he utilizado un servidor http de npm.
-
-- Para instalarlo, haced '`npm install`'.
-- Para lanzarlo, usad: '`npm run startServer`'.
-
-Gracias.
+run '`npm install`' for install dependencies.
+suse '`npm run startServer`' to run http server.
